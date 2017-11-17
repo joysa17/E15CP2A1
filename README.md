@@ -87,3 +87,4 @@ Pictory es una aplicación para que diversos usuarios guarden sus historias y pu
 	- Estas acciones solo deben estar disponibles para un usuario con el rol admin.
 
 # Actividad30
+# Actividad30
