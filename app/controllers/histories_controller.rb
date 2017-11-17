@@ -1,5 +1,6 @@
 class HistoriesController < ApplicationController
   before_action :set_history, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy] 
 
   # GET /histories
   # GET /histories.json
@@ -25,10 +26,10 @@ class HistoriesController < ApplicationController
   # POST /histories.json
   def create
     @history = History.new(history_params)
-
+    @history.user = helpers.current_user
     respond_to do |format|
       if @history.save
-        format.html { redirect_to @history, notice: 'History was successfully created.' }
+        format.html { redirect_to @history, notice: 'La historia ha sido creada.' }
         format.json { render :show, status: :created, location: @history }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class HistoriesController < ApplicationController
   def update
     respond_to do |format|
       if @history.update(history_params)
-        format.html { redirect_to @history, notice: 'History was successfully updated.' }
+        format.html { redirect_to @history, notice: 'La historia a sido actualizada.' }
         format.json { render :show, status: :ok, location: @history }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class HistoriesController < ApplicationController
   def destroy
     @history.destroy
     respond_to do |format|
-      format.html { redirect_to histories_url, notice: 'History was successfully destroyed.' }
+      format.html { redirect_to histories_url, notice: 'La historia a sido eliminada.' }
       format.json { head :no_content }
     end
   end
