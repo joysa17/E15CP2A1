@@ -86,3 +86,4 @@ Pictory es una aplicación para que diversos usuarios guarden sus historias y pu
 - Dentro del panel de control de usuarios, añadir al formulario de user la opción para dar o quitar el privilegio de admin.
 	- Estas acciones solo deben estar disponibles para un usuario con el rol admin.
 
+# Actividad30
