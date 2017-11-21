@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
-	
-	def create
-		@user =User.new/(user_params)
-		if @user.save
-			session[:user_id] = @user.id 
-		redirect_to root_path
-	    else
-	    render :new
-	    end	
-		
-	end
+  before_action :authenticate_user!
+	before_action :authenticate_admin!, only: [:index]
+
+  def index
+    @users = User.all
+  end
+
+  private
+	def authenticate_admin!
+    unless current_user.admin?
+      redirect_to root_path      
+    end
+  end
 end
